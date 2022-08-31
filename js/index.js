@@ -9,8 +9,8 @@ window.addEventListener("DOMContentLoaded", function (e) {
   };
 
   connection.mediaConstraints = {
-    video: false,
     audio: true,
+    video: false,
   };
 
   connection.sdpConstraints.mandatory = {
