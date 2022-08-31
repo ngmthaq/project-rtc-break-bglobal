@@ -12,12 +12,16 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
   connection.mediaConstraints.audio = true;
   connection.mediaConstraints.video = false;
-  
+
   connection.session.audio = true;
   connection.session.video = false;
 
   connection.onstream = function (e) {
     onStream(e);
+  };
+
+  connection.onopen = function (e) {
+    onOpen(e, connection);
   };
 
   openRoomButton.onclick = function (e) {

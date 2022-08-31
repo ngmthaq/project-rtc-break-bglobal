@@ -7,5 +7,5 @@ function onOpenRoom(e, connection) {
 function onJoinRoom(e, connection) {
   let roomId = roomInput?.value || defaultRoomId;
   e.target.disabled = true;
-  connection.open(roomId);
+  connection.join(roomId);
 }
