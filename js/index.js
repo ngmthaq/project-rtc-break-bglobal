@@ -3,20 +3,30 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
   connection.socketURL = socketURL;
 
-  connection.session = {
-    audio: true,
-    video: false,
-  };
-
-  connection.mediaConstraints = {
-    audio: true,
-    video: false,
-  };
-
   connection.sdpConstraints.mandatory = {
     OfferToReceiveAudio: true,
     OfferToReceiveVideo: true,
   };
+
+  console.log(connection);
+
+  if (connection.DetectRTC.hasMicrophone === true) {
+    connection.mediaConstraints.audio = true;
+    connection.session.audio = true;
+  } else {
+    alert("Máy không có mic đâu");
+  }
+
+  if (connection.DetectRTC.hasWebcam === true) {
+    connection.mediaConstraints.video = true;
+    connection.session.video = true;
+  } else {
+    alert("Máy không có camera đâu");
+  }
+
+  if (connection.DetectRTC.hasSpeakers === false) {
+    alert("Máy không có loa hay tai nghe à, nghe bằng niềm tin à");
+  }
 
   connection.onstream = function (e) {
     onStream(e);
